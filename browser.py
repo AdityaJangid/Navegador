@@ -10,19 +10,26 @@ class  Browser(gtk.Window):
 
         #create back, forward, refresh, and search pannel
         #back button
+        self.back = gtk.ToolButton(gtk.STOCK_GO_BACK)
+        self.frwd = gtk.ToolButton(gtk.STOCK_GO_FORWARD)
+        self.address_bar = gtk.Entry()
+
+
+        fixed = gtk.Fixed()
+        fixed.put(self.back, 0,0)
+        fixed.put(self.frwd, 30,0)
+        fixed.put(self.address_bar, )
 
 
 
+        #close process when close window
+        self.connect('destroy', lambda w: gtk.main_quit())
 
 
-
-
-
-
-
-
+        #show all things
+        self.add(fixed)
         self.show_all()
+
 
 Browser()
 gtk.main()
-
