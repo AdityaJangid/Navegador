@@ -22,7 +22,7 @@ class  Browser(gtk.Window):
 
 
 
-        #close process when close window
+        #destroy process when close window
         self.connect('destroy', lambda w: gtk.main_quit())
 
 
