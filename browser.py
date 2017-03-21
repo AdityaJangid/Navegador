@@ -20,7 +20,7 @@ class  Browser(gtk.Window):
 
        # #what to do with buttons
 #        self.back.connect("clicked" , self.go_back)
-        self.frwd.connect("clicked" , self.go_frwd)
+        self.frwd.connect("button_press_event" , self.go_frwd)
 #        self.refresh.connect("clicked" , self.refresh_page)
 #        self.address_bar.connect("activate" , self.load_page)
 #
@@ -29,8 +29,8 @@ class  Browser(gtk.Window):
 #        """
 #        print("test of button for go back")
 # 
-        def go_frwd(self):
-            print("test of button for go back")
+#    def go_frwd(self):
+#        print("test of button for go back")
 # 
 #    def refresh_page(self, arg1):
 #        """TODO: Docstring for go_back.
@@ -41,10 +41,6 @@ class  Browser(gtk.Window):
 #        """TODO: Docstring for go_back.
 #        """
 #        print("test of button for go back")
-# 
-
-
-
 
         fixed = gtk.Fixed()
         fixed.put(self.back, 0,0)
@@ -65,5 +61,4 @@ class  Browser(gtk.Window):
 
 Browser()
 gtk.main()
-
 
