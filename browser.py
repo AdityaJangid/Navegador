@@ -19,28 +19,11 @@ class  Browser(gtk.Window):
 
 
        # #what to do with buttons
-#        self.back.connect("clicked" , self.go_back)
+        self.back.connect("clicked" , self.go_back)
         self.frwd.connect("button_press_event" , self.go_frwd)
-#        self.refresh.connect("clicked" , self.refresh_page)
-#        self.address_bar.connect("activate" , self.load_page)
-#
-#    def go_back(self, arg1):
-#        """TODO: Docstring for go_back.
-#        """
-#        print("test of button for go back")
-# 
-#    def go_frwd(self):
-#        print("test of button for go back")
-# 
-#    def refresh_page(self, arg1):
-#        """TODO: Docstring for go_back.
-#        """
-#        print("test of button for go back")
-# 
-#    def load_page(self, arg1):
-#        """TODO: Docstring for go_back.
-#        """
-#        print("test of button for go back")
+        self.refresh.connect("clicked" , self.refresh_page)
+        self.address_bar.connect("activate" , self.load_page)
+
 
         fixed = gtk.Fixed()
         fixed.put(self.back, 0,0)
@@ -57,8 +40,21 @@ class  Browser(gtk.Window):
         #show all things
         self.add(fixed)
         self.show_all()
+    def go_back(self, arg1):
+        print("test of button for go back")
+
+    def go_frwd(self):
+        print("test of button for go back")
+ 
+    def refresh_page(self, arg1):
+        """TODO: Docstring for go_back.
+        """
+        print("test of button for go back")
+ 
+    def load_page(self, arg1):
+        """TODO: Docstring for go_back."""
+        print("test of button for go back")
 
 
 Browser()
 gtk.main()
-
