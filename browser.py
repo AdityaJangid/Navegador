@@ -1,7 +1,8 @@
-import commands
-import gtk 
+import commands, gtk, webkit
 a = commands.getoutput("xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'")
 b,c = a.split('x')
+
+
 class  Browser(gtk.Window):
     def __init__(self):
         super(Browser, self).__init__()
@@ -20,9 +21,18 @@ class  Browser(gtk.Window):
 
        # #what to do with buttons
         self.back.connect("clicked" , self.go_back)
-        self.frwd.connect("button_press_event" , self.go_frwd)
+        self.frwd.connect("clicked" , self.go_frwd)
         self.refresh.connect("clicked" , self.refresh_page)
         self.address_bar.connect("activate" , self.load_page)
+
+        self.navigation.pack_start(self.back, False)
+        self.navigation.pack_start(self.frwd, False)
+        self.navigation.pack_start(self.refresh, False)
+        self.navigation.pack_start(self.address_bar)
+
+
+        #create view for web pages
+
 
 
         fixed = gtk.Fixed()
@@ -44,16 +54,16 @@ class  Browser(gtk.Window):
         print("test of button for go back")
 
     def go_frwd(self):
-        print("test of button for go back")
+        print("test of button for go forward")
  
     def refresh_page(self, arg1):
         """TODO: Docstring for go_back.
         """
-        print("test of button for go back")
+        print("test of button for go refresh page")
  
     def load_page(self, arg1):
         """TODO: Docstring for go_back."""
-        print("test of button for go back")
+        print("test of button for go page  ")
 
 
 Browser()
