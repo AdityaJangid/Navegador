@@ -7,7 +7,7 @@ class  Browser(gtk.Window):
     def __init__(self):
         super(Browser, self).__init__()
         # created our main window
-        self.set_icon_from_file('why.png')
+        self.set_icon_from_file('navegador.jpg')
         self.set_default_size(int(b)-100, int(c)-100)
 
         self.navigation = gtk.HBox()
