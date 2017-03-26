@@ -3,6 +3,9 @@ Navegador is a python Gtk based web browser. Which is capable of opening web pag
 
 
 # Dependencies
---> python-gtk2 lib for gui $sudo apt-get install python-gtk2. 
+--> python-gtk2 lib for gui
+    $sudo apt-get install python-gtk2. 
 
---> python-webkit layout engine $sudo apt-get install python-webkit.
+--> python-webkit layout engine 
+    $sudo apt-get install python-webkit.
+
