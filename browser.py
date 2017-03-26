@@ -7,6 +7,7 @@ class  Browser(gtk.Window):
     def __init__(self):
         super(Browser, self).__init__()
         # created our main window
+        self.set_icon_from_file('why.png')
         self.set_default_size(int(b)-100, int(c)-100)
 
         self.navigation = gtk.HBox()
@@ -32,15 +33,30 @@ class  Browser(gtk.Window):
 
 
         #create view for web pages
+        self.view = gtk.ScrolledWindow()
+        self.webview = webkit.WebView()
+        self.webview.open('http://www.google.com')
+        self.webview.connect('title-changed', self.change_title)
+        self.webview.connect('load-committed', self.change_url)
+        self.view.add(self.webview)
 
 
+        #Added everything and initialize
+        self.container = gtk.VBox()
+        self.container.pack_start(self.navigation, False)
+        self.container.pack_start(self.view)
 
-        fixed = gtk.Fixed()
-        fixed.put(self.back, 0,0)
-        fixed.put(self.frwd, 33,0)
-        fixed.put(self.refresh, 60,0)
-        fixed.put(self.address_bar,110,000 )
+        self.add(self.container)
 
+        self.show_all()
+
+#        fixed = gtk.Fixed()
+#        fixed.put(self.back, 0,0)
+#        fixed.put(self.frwd, 33,0)
+#        fixed.put(self.refresh, 60,0)
+#        fixed.put(self.address_bar,110,000 )
+#        fixed.put(self.container, 500,500)
+#
 
 
         #destroy process when close window
@@ -48,22 +64,32 @@ class  Browser(gtk.Window):
 
 
         #show all things
-        self.add(fixed)
-        self.show_all()
+#        self.add(fixed)
     def go_back(self, arg1):
-        print("test of button for go back")
+        self.webview.go_back()
 
     def go_frwd(self):
-        print("test of button for go forward")
+        self.webview.go_forward()
  
     def refresh_page(self, arg1):
-        """TODO: Docstring for go_back.
-        """
-        print("test of button for go refresh page")
+        self.webview.reload()
  
-    def load_page(self, arg1):
-        """TODO: Docstring for go_back."""
-        print("test of button for go page  ")
+    def load_page(self, widget):
+        add = self.address_bar.get_text()
+        if add.startswith('http://') or add.startswith('https://'):
+            self.webview.open(add)
+        else:
+            add = 'http://' + add
+            self.address_bar.set_text(add)
+            self.webview.open(add)
+
+
+    def change_title(self, widget, frame, title):
+        self.set_title("Navigador" + title)
+    def change_url(self, widget, frame):
+        uri = frame.get_uri()
+        self.address_bar.set_text(uri)
+
 
 
 Browser()
